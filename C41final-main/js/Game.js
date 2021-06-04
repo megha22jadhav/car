@@ -89,7 +89,7 @@ class Game {
         
             }
         
-            
+            //for 
             if(player.distance < 2150){
               if(keyIsDown(38) && player.index !== null){
                   yVel += 0.9;
