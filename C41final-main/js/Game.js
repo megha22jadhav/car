@@ -43,12 +43,14 @@ class Game {
             car4.debug="true";
             cars = [car1, car2, car3, car4];
             passedFinish=false;
+            player.getFinishedPlayers();
           }
         
           play(){
             form.hide();
         
             Player.getPlayerInfo();
+           
             
             if(allPlayers !== undefined){
               //var display_position = 100;
@@ -130,6 +132,34 @@ class Game {
           //display sprites
           drawSprites();
         }
-           
-      
+           displayRanks(){
+             camera.position.y=0;
+             camera.position.x=0;
+
+             imageMode(CENTER);
+
+             Player.getPlayerInfo();
+
+        image(bronzeimg, displayWidth/-4, -100 + displayWidth/9, 200, 240);
+        image(silverimg, displayWidth/4, -100 + displayWidth/10, 225, 270);
+        image(goldimg, 0, -100, 250, 300);
+
+        textAlign(CENTER);
+        textSize(50);
+        for(var plr in allPlayers){
+          if(allPlayers[plr].place===1){
+            text("1st: "+allPlayers[plr].name,0,85);
+          }
+          else if(allPlayers[plr].place===2){
+            text("2st: "+allPlayers[plr].name,displayWidth/4, displayHeight/9+73);
+          }
+          else if(allPlayers[plr].place===3){
+            text("3st: "+allPlayers[plr].name,displayWidth/-4, displayHeight/10+76);
+          }
+          else{
+            textSize(30);
+            text("Honorable Mention: "+allPlayers[plr].name,0,225);
+          }
+        }
+           }
         }

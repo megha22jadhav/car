@@ -70,5 +70,9 @@ function draw(){
   if(finishedPlayers===4){
   game.update(2);
   }
+
+  if(gameState===2 && finishedPlayers===4){
+    game.displayRanks();
+  }
 }
   
