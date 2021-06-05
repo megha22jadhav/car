@@ -44,13 +44,14 @@ class Game {
             cars = [car1, car2, car3, car4];
             passedFinish=false;
             player.getFinishedPlayers();
+           
           }
         
           play(){
             form.hide();
         
             Player.getPlayerInfo();
-           
+         
             
             if(allPlayers !== undefined){
               //var display_position = 100;
@@ -92,7 +93,7 @@ class Game {
             }
         
             //for 
-            if(player.distance < 2150){
+            if(player.distance <4000){
               if(keyIsDown(38) && player.index !== null){
                   yVel += 0.9;
                   if(keyIsDown(37)){
@@ -115,8 +116,10 @@ class Game {
               Player.updateFinishedPlayers();
               player.place=finishedPlayers;
 
+              
               player.update();
-              playerFinish=true;
+              passedFinish=true;
+            
             }
             else{
               xVel*=0.8;
@@ -132,7 +135,7 @@ class Game {
           //display sprites
           drawSprites();
         }
-           displayRanks(){
+        displayRanks(){
              camera.position.y=0;
              camera.position.x=0;
 
@@ -147,7 +150,7 @@ class Game {
         textAlign(CENTER);
         textSize(50);
         for(var plr in allPlayers){
-          if(allPlayers[plr].place===1){
+          if(allPlayers[plr].place === 1){
             text("1st: "+allPlayers[plr].name,0,85);
           }
           else if(allPlayers[plr].place===2){
